@@ -16,7 +16,7 @@ O primeiro objetivo é responder as seguintes perguntas sobre o dataset:
 O segundo foi a construção de um modelo de Regressão Linear utilizando XGBRegressor no qual consegui um coeficiente de determinação (R²) de 0,977. 
 
 ### 🛠️ Ferramentas utilizadas
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 ## A estrutura do dataset
 
@@ -48,14 +48,14 @@ A colunas do dataset estão organizadas da seguinte forma:
 ## Preço varia de acordo com a Linha Aérea? e com a Classe?
 ![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot9.png?raw=true)
 
-Vistara e Air India tem preços de passagens mais caras que o restante das linhas aéreas. O restante tem preço parecido mas existe a linha área define bastante o preço. Vamos olhar sob o prisma da classe também.
+Vistara e Air India tem os valores de passagem mais caros me média por serem as únicas empresas no conjunto de dados a oferecem voos da categória Business, que conta com os maiores preços. 
 
 ![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot10.png?raw=true)
 
 ## Como os preços das passagens são afetados, entre 1 e 2 dias antes da viagem?
 ![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot11.png?raw=true)
 
-Passagens quando são compras com maior antecedência são mais baratas.
+Quanto antes forem compras as passagens melhores serão as ofertas de preço. 
 ## O preço muda de acordo com o período do dia para chegada e partida?
 ![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot12.png?raw=true)
 
@@ -78,8 +78,8 @@ As métricas do modelo foram as seguintes
 
 |Métrica|Resultado|
 |------------------|-------------|
-|Mean Squared Error|11433028.9639|
-|R² Score|0.9778|
+|Mean Squared Error|12095521.708812173|
+|R² Score|0.9765354990959167|
 
 ![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot14.png?raw=true)
 
