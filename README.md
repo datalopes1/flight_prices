@@ -51,36 +51,36 @@ Através de uma breve análise exploratória de dados foram respondidas as pergu
 # Exploratory Data Analysis
 ## Comportamento da variável alvo
 
-![hist](doc\img\plot1.png)
+![hist](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot1.png?raw=true)
 
-![box](doc\img\plot2.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot2.png?raw=true)
 
 ## Target, features e as perguntas de negócio
 #### 1. Preço varia de acordo com a Linha Aérea? e com a Classe?
-![box](doc\img\plot3.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot3.png?raw=true)
 
-![box](doc\img\plot4.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot4.png?raw=true)
 
 Vistara e Air India são as únicas empreas que oferecem o voos de classe Executiva e por isso tem os maiores valores de passagem aérea. 
 
 #### 2. Como os preços das passagens são afetados entre 1 e 2 dias antes da viagem?
 
-![box](doc\img\plot5.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot5.png?raw=true)
 
 O preço de passagem aéreas tem tendência de serem maiores quanto mais próximo do voo.
 
 #### 3. O preço muda de acordo com o período do dia para chegada e partida?
-![box](doc\img\plot6.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot6.png?raw=true)
 
 A madrugada é o período onde se encontra as passagens mais baratas, já os voos a noite são os mais caros tanto para chegada quanto para partida. 
 
 #### 4. O preço muda de acordo com o destino de partida e chegada?
-![box](doc\img\plot7.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot7.png?raw=true)
 
 Sim, os pontos de partida e destino tem influência no preço. Delhi é o destino mais barato, seguido por Hyderabad.
 
 ## Matriz de correlação
-![box](doc\img\plot8.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot8.png?raw=true)
 
 # Modelo de Machine Learning
 Escolhi o XGBoost para este projeto, e as métricas resultantes foram: 
@@ -92,5 +92,5 @@ Escolhi o XGBoost para este projeto, e as métricas resultantes foram:
 |**R2 Score Treino**|0.9783|
 |**R2 Score Teste**|0.9765|
 
-![box](doc\img\plot9.png)
-![box](doc\img\plot10.png)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot9.png?raw=true)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot10.png?raw=true)
