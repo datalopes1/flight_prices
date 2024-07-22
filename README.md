@@ -1,29 +1,33 @@
+# Prevendo Preço de Passsagens Aéreas com Machine Learning – Flight Price Prediction ✈️
 
-# Prevendo Preços de Voos Aéreos com Regressão Linear ✈️
+O dataset [Flight Price Prediction](https://www.kaggle.com/datasets/shubhambathwal/flight-price-prediction) disponibilizado por [Shubham Bathwal](https://www.kaggle.com/shubhambathwal) contém dados de reservas aéreas obtidas do website "Easy My Trip". Os dados cobrem o período de 11 de Fevereiro até 31 de Março de 2022, com 300261 registros.
 
-Neste processo serão realizados os processos de Análise Exploratória de Dados e construção de um modelo preditivo de Machine Learning com o XGBoost a partir do dataset Flight Price Prediction. Os dados podem ser encontrados no [Kaggle](https://www.kaggle.com/datasets/shubhambathwal/flight-price-prediction) e foram disponibilizados por [Shubham Bathwal](https://www.kaggle.com/shubhambathwal).
+![flight](https://i.imgur.com/RkAHy6w.jpeg)
 
-![](https://images.unsplash.com/photo-1483450388369-9ed95738483c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+## 1.1. Metas e objetivos
 
-### Objetivos e resultados
-O primeiro objetivo é responder as seguintes perguntas sobre o dataset:
+Este projeto tem objetivo de responder algumas perguntas de negócio e criar um modelo de Machine Learning para predição de preços de voos.
 
-- Preço varia de acordo com a Linha Aérea? e com a Classe?
-- Como os preços das passagens são afetados, entre 1 e 2 dias antes da viagem?
-- O preço muda de acordo com o período do dia para chegada e partida?
-- O preço muda de acordo com o destino de partida e chegada?
+### Perguntas de negócio
+1. Preço varia de acordo com a Linha Aérea? e com a Classe?
+2. Como os preços das passagens são afetados, entre 1 e 2 dias antes da viagem?
+3. O preço muda de acordo com o período do dia para chegada e partida?
+4. O preço muda de acordo com o destino de partida e chegada?
 
-O segundo foi a construção de um modelo de Regressão Linear utilizando XGBRegressor no qual consegui um coeficiente de determinação (R²) de 0,977. 
+### Resultados
+Através de uma breve análise exploratória de dados foram respondidas as perguntas de negócio, e através da modelagem cheguei a um modelo com as seguintes métricas:
 
-### 🛠️ Ferramentas utilizadas
+|Métrica|Resultado|
+|--|---|
+|**Mean Squared Error**|12075182.8993 |
+|**R2 Score**|0.9765|
+
+### Ferramentas utilizadas
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## A estrutura do dataset
-
-A colunas do dataset estão organizadas da seguinte forma:
-
+### Features
 |Coluna|Descrição|
-|-------|---------|
+|-------|--------|
 |airline|A linha aérea do voo|
 |flight|O código de identificação do voo|
 |source_city|A cidade de onde o voo está partindo|
@@ -36,7 +40,7 @@ A colunas do dataset estão organizadas da seguinte forma:
 |days_left|Diferença entre o dia da viagem e da reserva|
 |price|Preço da passagem|
 
-## Bibliotecas Python utilizadas
+### Bibliotecas Python utilizadas
 #### Manipulação de dados
 - Pandas, Numpy.
 #### EDA
@@ -44,55 +48,49 @@ A colunas do dataset estão organizadas da seguinte forma:
 #### Machine Learning
 - XGBoost, sklearn, feature_engine.
 
-# Análise Exploratória de Dados (EDA)
-## Preço varia de acordo com a Linha Aérea? e com a Classe?
-![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot9.png?raw=true)
+# Exploratory Data Analysis
+## Comportamento da variável alvo
 
-Vistara e Air India tem os valores de passagem mais caros me média por serem as únicas empresas no conjunto de dados a oferecem voos da categória Business, que conta com os maiores preços. 
+![hist](doc\img\plot1.png)
 
-![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot10.png?raw=true)
+![box](doc\img\plot2.png)
 
-## Como os preços das passagens são afetados, entre 1 e 2 dias antes da viagem?
-![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot11.png?raw=true)
+## Target, features e as perguntas de negócio
+#### 1. Preço varia de acordo com a Linha Aérea? e com a Classe?
+![box](doc\img\plot3.png)
 
-Quanto antes forem compras as passagens melhores serão as ofertas de preço. 
-## O preço muda de acordo com o período do dia para chegada e partida?
-![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot12.png?raw=true)
+![box](doc\img\plot4.png)
 
-A madrugada também é o melhor período para comprar passagens de chegada. Se tornando o período ideal para comprar passagens seguido pela tarde e o começo da manhã.
+Vistara e Air India são as únicas empreas que oferecem o voos de classe Executiva e por isso tem os maiores valores de passagem aérea. 
 
-## O preço muda de acordo com o destino de partida e chegada?
-![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot13.png?raw=true)
+#### 2. Como os preços das passagens são afetados entre 1 e 2 dias antes da viagem?
+
+![box](doc\img\plot5.png)
+
+O preço de passagem aéreas tem tendência de serem maiores quanto mais próximo do voo.
+
+#### 3. O preço muda de acordo com o período do dia para chegada e partida?
+![box](doc\img\plot6.png)
+
+A madrugada é o período onde se encontra as passagens mais baratas, já os voos a noite são os mais caros tanto para chegada quanto para partida. 
+
+#### 4. O preço muda de acordo com o destino de partida e chegada?
+![box](doc\img\plot7.png)
 
 Sim, os pontos de partida e destino tem influência no preço. Delhi é o destino mais barato, seguido por Hyderabad.
 
-![](https://images.unsplash.com/photo-1504150558240-0b4fd8946624?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+## Matriz de correlação
+![box](doc\img\plot8.png)
 
-# Modelo de Previsão
-## Pré-processamento dos dados
-Selecionei as colunas que seriam utilizadas, e apliquei o OneHotEncoder. 
-## Usando o XGBRegressor
-Os dados foram separados em conjuntos de treino e testes e o modelo foi instanciado e ajustado.
-## Métricas
-As métricas do modelo foram as seguintes
+# Modelo de Machine Learning
+Escolhi o XGBoost para este projeto, e as métricas resultantes foram: 
 
 |Métrica|Resultado|
-|------------------|-------------|
-|Mean Squared Error|12095521.708812173|
-|R² Score|0.9765354990959167|
+|--|---|
+|**Mean Squared Error Treino**|11145408.1282|
+|**Mean Squared Error Teste**|12075182.8993 |
+|**R2 Score Treino**|0.9783|
+|**R2 Score Teste**|0.9765|
 
-![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot14.png?raw=true)
-
-![](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot15.png?raw=true)
-
-# Conclusões
-### Respondendo as perguntas iniciais
-
-- As companhias aéreas com maior valor de passagem são a Vistara e Air India, o que é natural já que são as únicas que oferecem voos de classe executiva, sendo esses os voos com passagens mais caras.
-- Comprar passagens com antecedência vai trazer melhores ofertas nos preços,quanto mais próxima ao voo mais cara é a passagem.
-- Viajar de madrugada e cedo na manhã é mais barato que em outros períodos do dia.
-- Delhi e Hyderabad são os destinos de viagem mais baratos no conjunto de dados, e Chennai o destino mais caro.
-
-### Sobre o modelo
-
-Com a utilização do algoritmo XGBRegressor conseguimos uma ótima métrica de coeficiente de determinação, em 0.9778, com a aplicação deste modelo será possível prever com segurança os preços de passagens aéreas. 
+![box](doc\img\plot9.png)
+![box](doc\img\plot10.png)
