@@ -19,11 +19,13 @@ Através de uma breve análise exploratória de dados foram respondidas as pergu
 
 |Métrica|Resultado|
 |--|---|
-|**Mean Squared Error**|12075182.8993 |
-|**R2 Score**|0.9765|
+|Mean Absolute Error|1588.4280|
+|Mean Squared Error|8835481.4604|
+|Root Mean Squared Error|2972.4537|
+|R2 Score|0.9828|
 
 ### Ferramentas utilizadas
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 ### Features
 |Coluna|Descrição|
@@ -83,14 +85,14 @@ Sim, os pontos de partida e destino tem influência no preço. Delhi é o destin
 ![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot8.png?raw=true)
 
 # Modelo de Machine Learning
-Escolhi o XGBoost para este projeto, e as métricas resultantes foram: 
+Escolhi o XGBoost para este projeto, e as métricas resultantes após modelagem e tunagem de hiper parâmetros foram: 
 
 |Métrica|Resultado|
 |--|---|
-|**Mean Squared Error Treino**|11145408.1282|
-|**Mean Squared Error Teste**|12075182.8993 |
-|**R2 Score Treino**|0.9783|
-|**R2 Score Teste**|0.9765|
+|Mean Absolute Error|1588.4280|
+|Mean Squared Error|8835481.4604|
+|Root Mean Squared Error|2972.4537|
+|R2 Score|0.9828|
 
-![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot9.png?raw=true)
-![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot10.png?raw=true)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot11.png?raw=true)
+![box](https://github.com/datalopes1/flight_prices/blob/datalopes1/doc/img/plot12.png?raw=true)
