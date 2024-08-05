@@ -16,7 +16,7 @@ from sklearn.compose import ColumnTransformer
 
 # Machine Learning
 from xgboost import XGBRegressor
-from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 # %%
 df = pd.read_csv("../../data/raw/Clean_Dataset.csv")
 df
@@ -31,7 +31,6 @@ cat_features = X.select_dtypes(include = 'object').columns.to_list()
 num_features = X.select_dtypes(include = 'number').columns.to_list()
 #%%
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
-print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 # %% Pipeline do modelo
 num_transformer = Pipeline([
     ('imput', MeanMedianImputer(imputation_method='median')),
@@ -49,7 +48,15 @@ preprocessor = ColumnTransformer(
     ]
 )
 
-model = XGBRegressor()
+best_params = {
+    'learning_rate': 0.09372862218041428,
+    'max_depth': 10,
+    'subsample': 0.7358527060931693,
+    'colsample_bytree': 0.9494020324700931,
+    'min_child_weight': 7
+    }
+
+model = XGBRegressor(**best_params)
 
 xgb = Pipeline([
     ('preprocessor', preprocessor),
@@ -58,35 +65,28 @@ xgb = Pipeline([
 
 xgb.fit(X_train, y_train)
 # %% Gerando previsões
-y_pred_train = xgb.predict(X_train)
-y_pred_test = xgb.predict(X_test)
+y_pred = xgb.predict(X_test)
 # %% Métricas do modelo
-mse_train = mean_squared_error(y_train, y_pred_train)
-mse_test = mean_squared_error(y_test, y_pred_test)
-r2_train = r2_score(y_train, y_pred_train)
-r2_test = r2_score(y_test, y_pred_test)
+def metrics_report(y_true, y_pred):
+    mae = mean_absolute_error(y_true, y_pred)
+    mse = mean_squared_error(y_true, y_pred)
+    rmse = mean_squared_error(y_true, y_pred, squared = False)
+    r2 = r2_score(y_true, y_pred)
 
-print("Métricas do Modelo")
-print("=" * 50)
-print(f'Mean Squared Error em Treino: {mse_train}')
-print(f'Mean Squared Error em Teste: {mse_test}')
-print("-" * 50)
-print(f'R2 Score em Treino: {r2_train}')
-print(f'R2 Score em Teste: {r2_test}')
+    return {
+        'Mean Absolute Error': mae,
+        'Mean Squared Error': mse,
+        'Root Mean Squared Error': rmse,
+        'R2 Score': r2
+    }
 
-fig, ax = plt.subplots(figsize = (12, 6))
-
-sns.scatterplot(x = y_test, y = y_pred_test)
-ax.set_title('Real x Predito', loc = 'left', fontsize = 16, pad = 12)
-ax.set_xlabel('Real', fontsize = 8)
-ax.set_ylabel('Predito', fontsize = 8)
-plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color = 'red')
-plt.show()
+metrics = metrics_report(y_test, y_pred)
+metrics
 # %%
 modelo_pred = pd.Series({
     'model': xgb,
     'features': features,
-    'r2_score': r2_test
+    'metrics': metrics
 })
 
 modelo_pred.to_pickle("../../models/modelo_pred.pkl")
